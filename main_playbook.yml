@@ -1,0 +1,17 @@
+
+---
+- name: Install monitoring tools
+  hosts: all
+  tasks:
+    - name: Install Elasticsearch
+      include_role:
+        name: install_Elasticsearch
+
+    - name: Install Logstash
+      include_role:
+        name: install_Logstash
+ 
+    - name: Install Kibana
+      include_role:
+        name: install_Kibana
+

@@ -1,0 +1,35 @@
+---
+# tasks file for install_Kibana
+- name: Install Kibana (Ubuntu)
+  apt:
+    name: kibana
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Run daemon-reload for kibana (Ubuntu)
+  systemd: daemon_reload=yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Enable service Kibana (Ubuntu)
+  systemd:
+    name: kibana
+    enabled: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install Kibana (CentOS)
+  yum:
+    name: kibana
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "CentOS"
+
+- name: Run daemon-reload for kibana (CentOS)
+  systemd: daemon_reload=yes
+  when: ansible_distribution == "CentOS"
+
+- name: Enable service Kibana (CentOS)
+  systemd:
+    name: kibana
+    enabled: yes
+  when: ansible_distribution == "CentOS"
